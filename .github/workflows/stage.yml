@@ -27,11 +27,11 @@ jobs:
     - name: NPM Install
       run: npm install
     - name: NPM Install Angular
-      run: npm install -g @angular/cli &gt; /dev/null
+      run: npm install -g @angular/cli > /dev/null
     - name: NPM build Angular Production
       run: ng build --prod
     - name: Delete Existing Files
-      run : sudo sshpass -p ${{ secrets.SSH_PASS }} -v ssh -o StrictHostKeyChecking=no ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} &#39;rm -rf /home/runcloud/webapps/viuweb/*&#39;
+      run : sudo sshpass -p ${{ secrets.SSH_PASS }} -v ssh -o StrictHostKeyChecking=no ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}, rm -rf /home/runcloud/webapps/viuweb/*&#39;
 
     - name: Compress and Copy New Files to server
       run : |
@@ -41,4 +41,4 @@ jobs:
             cd ..
             sudo sshpass -p ${{ secrets.FORSSH }} scp -v -o StrictHostKeyChecking=no -r viusasa.tar.gz ${{ secrets.USER_SSH }}@${{ secrets.IP_CM }}:/home/runcloud/webapps/viuweb
     - name: Uncompress new Files
-      run : sudo sshpass -p ${{ secrets.FORSSH }} -v ssh -o StrictHostKeyChecking=no ${{ secrets.USER_SSH }}@${{ secrets.IP_CM }} &#39;cd /home/runcloud/webapps/viuweb/ && tar -xzvf viusasa.tar.gz && rm viusasa.tar.gz&#39;
+      run : sudo sshpass -p ${{ secrets.FORSSH }} -v ssh -o StrictHostKeyChecking=no ${{ secrets.USER_SSH }}@${{ secrets.IP_CM }}, /home/runcloud/webapps/viuweb/ && tar -xzvf viusasa.tar.gz && rm viusasa.tar.gz,;
